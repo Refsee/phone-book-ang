@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="item">
+    <p>
+      <span (click)="sortFirstName()">First name </span>
+      <span *ngIf="sortCollum===1">{{ sortOrder == true?	'&#9650;' :  '&#9660;' }}</span>
+    </p>
+    <p>
+      <span (click)="sortSecondName()">Last name</span>
+      <span *ngIf="sortCollum===2">{{ sortOrder == true?	'&#9650;' :  '&#9660;' }}</span>
+    </p>
+    <p>
+      <span (click)="sortPhone()">Number</span>
+      <span *ngIf="sortCollum===3">{{ sortOrder == true?	'&#9650;' :  '&#9660;' }}</span>
+    </p>
+    <p>Edit</p>
+    <p>DELETE</p>
+  </div>
+  <div
+    class="item effect"
+    *ngFor="
+      let item of PersonList | search: field | sort: sortType:sortOrder;
+      index as i
+    "
+  >
+    <p>{{ item.firstName }}</p>
+    <p>{{ item.secondName }}</p>
+    <p>{{ item.phone }}</p>
+    <p><button class="btn btn-edit" (click)="ePerson(i)">Edit</button></p>
+    <p>
+      <button class="btn btn-delete" (click)="dPerson(i)">DELETE</button>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+  <h1 class="header-title">My phone book!</h1>
+  <div class="form-group">
+    <input
+      type="text"
+      class="input-add"
+      [(ngModel)]="search"
+      placeholder="search text goes here"
+    />
+    <button class="btn-add" (click)="openModal()">Add Phone</button>
+  </div>
+  <app-person
+    [PersonList]="arrPerson"
+    [field]="search"
+    (deletePerson)="deletePerson($event)"
+    (editPerson)="editPerson($event)"
+  ></app-person>
+  <!-- <app-modal
+    *ngIf="isModal"
+    (newPerson)="addPerson($event)"
+    (closeModalStatus)="closeModal()"
+  ></app-modal> -->
+
+  <div class="modal-overlay"     *ngIf="isModal">
+    <div class="modal">
+        <div class="modal-header">
+            <p class="title">Add phone</p>
+            <button class="btn-close"(click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-main">
+            <input type="text" placeholder="first name..." [(ngModel)]="first">
+            <input type="text" placeholder="secont name..." [(ngModel)]="second">
+            <input type="text" placeholder="phone number..." [(ngModel)]="number">
+        </div>
+        <div class="modal-footer">
+            <button class=" btn-save" (click)="createPerson()">Save</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
